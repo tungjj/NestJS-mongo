@@ -1,3 +1,5 @@
+import { WordsModule } from './words/words.module';
+import { LessonsModule } from './lessons/lessons.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -7,6 +9,11 @@ import { UsersModule } from './users/users.module';
 @Module({
   controllers: [AppController],
   providers: [AppService],
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest'), UsersModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/nest'),
+    UsersModule,
+    LessonsModule,
+    WordsModule,
+  ],
 })
 export class AppModule {}

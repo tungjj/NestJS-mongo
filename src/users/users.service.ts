@@ -23,7 +23,10 @@ export class UsersService {
     return this.userModel.findOne({ id: id }).exec();
   }
   async update(id: string, updateUserDto: UpdateUserDto) {
-    const res = await this.userModel.updateOne({ id }, updateUserDto);
+    const res = await this.userModel.updateOne(
+      { _id: id },
+      { ...updateUserDto },
+    );
     return res;
   }
   async remove(id: string) {
