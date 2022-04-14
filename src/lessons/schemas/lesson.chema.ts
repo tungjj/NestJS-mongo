@@ -1,9 +1,8 @@
 import { Word } from '../../words/schemas/word.schema';
 import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import * as mongoose from 'mongoose';
-
 export type LessonDocument = Lesson & Document;
+import * as mongoose from 'mongoose';
 
 @Schema()
 export class Lesson {
