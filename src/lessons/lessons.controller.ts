@@ -1,14 +1,26 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { LessonsService } from './lessons.service';
 import { CreateLessonDto } from './dto/create-lesson.dto';
 import { UpdateLessonDto } from './dto/update-lesson.dto';
 
 @Controller('lessons')
+@UseGuards(AuthGuard())
 export class LessonsController {
   constructor(private readonly lessonsService: LessonsService) {}
 
   @Post()
   create(@Body() createLessonDto: CreateLessonDto) {
+    console.log(createLessonDto);
     return this.lessonsService.create(createLessonDto);
   }
 

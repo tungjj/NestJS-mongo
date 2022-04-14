@@ -1,1 +1,3 @@
-export class Lesson {}
+export class Lesson {
+  
+}

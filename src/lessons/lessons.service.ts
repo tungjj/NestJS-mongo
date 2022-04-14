@@ -1,15 +1,26 @@
+import { LessonDocument, Lesson } from './schemas/lesson.chema';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { CreateLessonDto } from './dto/create-lesson.dto';
 import { UpdateLessonDto } from './dto/update-lesson.dto';
-
+// import { InjectModel}
 @Injectable()
 export class LessonsService {
+  constructor(
+    @InjectModel(Lesson.name)
+    private lessonModel: Model<LessonDocument>,
+  ) {}
   create(createLessonDto: CreateLessonDto) {
-    return 'This action adds a new lesson';
+    console.log(createLessonDto);
+    const createdLesson = new this.lessonModel({
+      ...createLessonDto,
+    });
+    return createdLesson.save();
   }
 
-  findAll() {
-    return `This action returns all lessons`;
+  async findAll() {
+    return await this.lessonModel.find();
   }
 
   findOne(id: number) {
