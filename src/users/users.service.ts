@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
-import { UserEntity} from './entities/user.entity';
+import { UserEntity } from './entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class UsersService {

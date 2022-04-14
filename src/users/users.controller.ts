@@ -1,4 +1,3 @@
-import { GetUser } from './get-user.decorator';
 import {
   Controller,
   Get,
