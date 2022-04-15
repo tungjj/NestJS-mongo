@@ -23,8 +23,8 @@ export class LessonsService {
     return await this.lessonModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} lesson`;
+  async findOne(id: string) {
+    return await this.lessonModel.findOne({ _id: id });
   }
 
   update(id: number, updateLessonDto: UpdateLessonDto) {
