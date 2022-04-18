@@ -18,19 +18,26 @@ import { UpdateWordDto } from './dto/update-word.dto';
 export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
-  @Post()
-  create(@Param() id_lesson: string, @Body() createWordDto: CreateWordDto) {
-    return this.wordsService.create(id_lesson, createWordDto);
+  /*
+   * @param: id of lesson that word belongs to
+   */
+  @Post(':id')
+  create(@Param('id') id: string, @Body() createWordDto: CreateWordDto) {
+    return this.wordsService.create(id, createWordDto);
   }
 
   @Get()
   findAll() {
     return this.wordsService.findAll();
   }
-
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.wordsService.findOne(+id);
+  findByIdLesson(@Param('id') idLesson: string) {
+    return this.wordsService.findByIdLesson(idLesson);
+  }
+
+  @Get(':word')
+  findOne(@Param('word') word: string) {
+    return this.wordsService.findOne(word);
   }
 
   @Patch(':id')

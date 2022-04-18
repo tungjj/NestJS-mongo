@@ -33,14 +33,19 @@ export class LessonsController {
   findOne(@Param('id') id: string) {
     return this.lessonsService.findOne(id);
   }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLessonDto: UpdateLessonDto) {
-    return this.lessonsService.update(+id, updateLessonDto);
+  @Get('words/:id')
+  findAllWordOfLesson(@Param('id') id: string) {
+    console.log(id);
+    return this.lessonsService.findAllWordOfLesson(id);
   }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateLessonDto: UpdateLessonDto) {
+  //   return this.lessonsService.update(id, updateLessonDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.lessonsService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.lessonsService.remove(+id);
+  // }
+
 }
